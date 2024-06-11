@@ -79,10 +79,11 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="index.jsp" class="nav-item nav-link active">Edit Profile</a>
+                        <a href="owner_index.jsp" class="nav-item nav-link active">Home</a>
+                        <a href="editprofile.jsp" class="nav-item nav-link">Edit Profile</a>
                         <a href="change_pwd.jsp" class="nav-item nav-link">Change Password</a>
                         <a href="logout.jsp" class="nav-item nav-link">Logout</a>
-                        <a href="contact.jsp" class="nav-item nav-link">Delete Profile</a>
+                        <a href="deleteuser.jsp" class="nav-item nav-link">Delete Profile</a>
                     </div>
                 </div>
             </nav>

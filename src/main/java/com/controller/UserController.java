@@ -137,6 +137,18 @@ public class UserController extends HttpServlet {
 				request.getRequestDispatcher("new-password.jsp").forward(request, response);
 			}
 		}
+		
+		else if(submit.equalsIgnoreCase("update_profile")) {
+			UserBean u=new UserBean();
+			u.setUid(Integer.parseInt(request.getParameter("uid"))); 
+			u.setName(request.getParameter("name"));
+			u.setEmail(request.getParameter("email"));
+			u.setMobile(Long.parseLong(request.getParameter("mobile")));
+			u.setAddress(request.getParameter("address"));
+			UserDao.update_user(u);
+			request.setAttribute("msg", "User Updated Successfully");
+	        request.getRequestDispatcher("editprofile.jsp").forward(request, response);
+		}
 	}
 
 }

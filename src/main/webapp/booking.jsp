@@ -1,13 +1,12 @@
 <%@ include file="header.jsp"%>
+<%@ page import="com.dao.CarDao" %>
+<%@ page import="com.bean.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <body>
-   
-
-    
     <!-- Page Header Start -->
     <div class="container-fluid page-header">
         <h1 class="display-3 text-uppercase text-white mb-3">Car Booking</h1>
@@ -19,17 +18,21 @@
     </div>
     <!-- Page Header Start -->
 
+    <%
+    int cid = Integer.parseInt(request.getParameter("cid"));
+    Car c = CarDao.Specific_car(cid);
+    %>
 
     <!-- Detail Start -->
     <div class="container-fluid pt-5">
         <div class="container pt-5 pb-3">
-            <h1 class="display-4 text-uppercase mb-5">Mercedes Benz R3</h1>
+            <h1 class="display-4 text-uppercase mb-5"><%= c.getCar_name() %></h1>
             <div class="row align-items-center pb-2">
                 <div class="col-lg-6 mb-4">
-                    <img class="img-fluid" src="img/bg-banner.jpg" alt="">
+                    <img class="img-fluid" src="car_images/<%= c.getCar_img() %>">
                 </div>
                 <div class="col-lg-6 mb-4">
-                    <h4 class="mb-2">$99.00/Day</h4>
+                    <h4 class="mb-2">Rs. <%= c.getCar_ppd() %>/Day</h4>
                     <div class="d-flex mb-3">
                         <h6 class="mr-2">Rating:</h6>
                         <div class="d-flex align-items-center justify-content-center mb-1">
@@ -41,176 +44,104 @@
                             <small>(250)</small>
                         </div>
                     </div>
-                    <p>Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam dolor diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam diam amet diam et eos sadipscing labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor consetetur takimata eirmod, dolores takimata consetetur invidunt</p>
-                    <div class="d-flex pt-1">
-                        <h6>Share on:</h6>
-                        <div class="d-inline-flex">
-                            <a class="px-2" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="px-2" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="px-2" href=""><i class="fab fa-linkedin-in"></i></a>
-                            <a class="px-2" href=""><i class="fab fa-pinterest"></i></a>
-                        </div>
-                    </div>
+                    <p><%= c.getCar_desc() %></p>
                 </div>
             </div>
             <div class="row mt-n3 mt-lg-0 pb-4">
                 <div class="col-md-3 col-6 mb-2">
-                    <i class="fa fa-car text-primary mr-2"></i>
-                    <span>Model: 2015</span>
+                    <i class="fa fa-car-side text-primary mr-2"></i>
+                    <span>Model: <%= c.getCar_model() %></span>
                 </div>
                 <div class="col-md-3 col-6 mb-2">
                     <i class="fa fa-cogs text-primary mr-2"></i>
-                    <span>Automatic</span>
+                    <span>Gear: <%= c.getCar_gear() %></span>
                 </div>
                 <div class="col-md-3 col-6 mb-2">
-                    <i class="fa fa-road text-primary mr-2"></i>
-                    <span>20km/liter</span>
+                    <i class="fa fa-tachometer-alt text-primary mr-2"></i>
+                    <span>Efficiency: <%= c.getFuel_eff() %> km/l</span>
                 </div>
                 <div class="col-md-3 col-6 mb-2">
-                    <i class="fa fa-eye text-primary mr-2"></i>
-                    <span>GPS Navigation</span>
+                    <i class="fa fa-gas-pump text-primary mr-2"></i>
+                    <span>Fuel: <%= c.getFuel_type() %></span>
                 </div>
                 <div class="col-md-3 col-6 mb-2">
-                    <i class="fa fa-car text-primary mr-2"></i>
-                    <span>Model: 2015</span>
+                    <i class="fa fa-users text-primary mr-2"></i>
+                    <span>Capacity: <%= c.getPass_cap() %> persons</span>
                 </div>
                 <div class="col-md-3 col-6 mb-2">
-                    <i class="fa fa-cogs text-primary mr-2"></i>
-                    <span>Automatic</span>
-                </div>
-                <div class="col-md-3 col-6 mb-2">
-                    <i class="fa fa-road text-primary mr-2"></i>
-                    <span>20km/liter</span>
-                </div>
-                <div class="col-md-3 col-6 mb-2">
-                    <i class="fa fa-eye text-primary mr-2"></i>
-                    <span>GPS Navigation</span>
-                </div>
-                <div class="col-md-3 col-6 mb-2">
-                    <i class="fa fa-car text-primary mr-2"></i>
-                    <span>Model: 2015</span>
-                </div>
-                <div class="col-md-3 col-6 mb-2">
-                    <i class="fa fa-cogs text-primary mr-2"></i>
-                    <span>Automatic</span>
-                </div>
-                <div class="col-md-3 col-6 mb-2">
-                    <i class="fa fa-road text-primary mr-2"></i>
-                    <span>20km/liter</span>
-                </div>
-                <div class="col-md-3 col-6 mb-2">
-                    <i class="fa fa-eye text-primary mr-2"></i>
-                    <span>GPS Navigation</span>
+                    <i class="fa fa-suitcase text-primary mr-2"></i>
+                    <span>Luggage: <%= c.getLugg_cap() %> L</span>
                 </div>
             </div>
         </div>
-    </div>
+    </div><br><br><br>
     <!-- Detail End -->
-
 
     <!-- Car Booking Start -->
     <div class="container-fluid pb-5">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-6">
                     <h2 class="mb-4">Personal Detail</h2>
                     <div class="mb-5">
                         <div class="row">
                             <div class="col-6 form-group">
-                                <input type="text" class="form-control p-4" placeholder="First Name" required="required">
+                                <input type="text" class="form-control p-4" value="<%= u.getName() %>" readonly>
                             </div>
                             <div class="col-6 form-group">
-                                <input type="text" class="form-control p-4" placeholder="Last Name" required="required">
+                                <input type="text" class="form-control p-4" value="<%= u.getEmail() %>" readonly>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6 form-group">
-                                <input type="email" class="form-control p-4" placeholder="Your Email" required="required">
+                                <input type="email" class="form-control p-4" value="<%= u.getMobile() %>" readonly>
                             </div>
                             <div class="col-6 form-group">
-                                <input type="text" class="form-control p-4" placeholder="Mobile Number" required="required">
+                                <input type="text" class="form-control p-4" value="<%= u.getAddress() %>" readonly>
                             </div>
                         </div>
                     </div>
                     <h2 class="mb-4">Booking Detail</h2>
                     <div class="mb-5">
-                        <div class="row">
-                            <div class="col-6 form-group">
-                                <select class="custom-select px-4" style="height: 50px;">
-                                    <option selected>Pickup Location</option>
-                                    <option value="1">Location 1</option>
-                                    <option value="2">Location 2</option>
-                                    <option value="3">Location 3</option>
-                                </select>
-                            </div>
-                            <div class="col-6 form-group">
-                                <select class="custom-select px-4" style="height: 50px;">
-                                    <option selected>Drop Location</option>
-                                    <option value="1">Location 1</option>
-                                    <option value="2">Location 2</option>
-                                    <option value="3">Location 3</option>
-                                </select>
-                            </div>
-                        </div>
+                    <form name="frm" method="post" action="bookingController" enctype="multipart/form-data">
+                        <input type="hidden" name="cid" value="<%= c.getCid() %>">
+                        <input type="hidden" name="uid" value="<%= u.getUid() %>">
+                        <input type="hidden" name="car_ppd" value="<%= c.getCar_ppd() %>">
+                        
                         <div class="row">
                             <div class="col-6 form-group">
                                 <div class="date" id="date2" data-target-input="nearest">
-                                    <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Pickup Date"
-                                        data-target="#date2" data-toggle="datetimepicker" />
+                                    <input type="date" class="form-control p-4 datetimepicker-input" name="from_date">
                                 </div>
                             </div>
                             <div class="col-6 form-group">
-                                <div class="time" id="time2" data-target-input="nearest">
-                                    <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Pickup Time"
-                                        data-target="#time2" data-toggle="datetimepicker" />
+                                <div class="date" id="date2" data-target-input="nearest">
+                                    <input type="date" class="form-control p-4 datetimepicker-input" name="to_date">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-6 form-group">
-                                <select class="custom-select px-4" style="height: 50px;">
-                                    <option selected>Select Adult</option>
-                                    <option value="1">Adult 1</option>
-                                    <option value="2">Adult 2</option>
-                                    <option value="3">Adult 3</option>
-                                </select>
+                        <div class="col-6 form-group">
+                                <input type="file" class="form-control p-4" name="document">
                             </div>
-                            <div class="col-6 form-group">
-                                <select class="custom-select px-4" style="height: 50px;">
-                                    <option selected>Select Child</option>
-                                    <option value="1">Child 1</option>
-                                    <option value="2">Child 2</option>
-                                    <option value="3">Child 3</option>
-                                </select>
-                            </div>
+                        </div><br>
+                        <div class="text-center">
+                            <button class="btn btn-primary py-3 px-5" type="submit" name="submit" value="book_confirm">Confirm Booking</button>
                         </div>
-                        <div class="form-group">
-                            <textarea class="form-control py-3 px-4" rows="3" placeholder="Special Request" required="required"></textarea>
-                        </div>
+                        </form>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <div class="bg-secondary p-5 mb-5">
-                        <h2 class="text-primary mb-4">Payment</h2>
-                        <div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="paypal">
-                                <label class="custom-control-label" for="paypal">Paypal</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="directcheck">
-                                <label class="custom-control-label" for="directcheck">Direct Check</label>
-                            </div>
-                        </div>
-                        <div class="form-group mb-4">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="banktransfer">
-                                <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
-                            </div>
-                        </div>
-                        <button class="btn btn-block btn-primary py-3">Reserve Now</button>
+                        <h2 class="text-primary mb-4">Booking Rules & Policy</h2>
+                        <ul class="list-unstyled">
+                            <li>1. Car pickup and drop-off location will be at the car owner's address.</li>
+                            <li>2. After submitting the car booking, the owner will verify your documents. The booking will be confirmed from the owner's side, after which the user can proceed with payment.</li>
+                            <li>3. The car price per day is calculated from 10 AM to the next morning at 10 AM (24 hours).</li>
+                            <li>4. The charge will be calculated based on the car price per day multiplied by the number of rental days.</li>
+                            <li>5. Please provide original documents for verification. Any identification document that verifies the user's identity is acceptable.</li>
+                            <li>6. If any damage is found after renting, the user will be liable to pay for it.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -218,46 +149,10 @@
     </div>
     <!-- Car Booking End -->
 
-
-    <!-- Vendor Start -->
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <div class="owl-carousel vendor-carousel">
-                <div class="bg-light p-4">
-                    <img src="img/vendor-1.png" alt="">
-                </div>
-                <div class="bg-light p-4">
-                    <img src="img/vendor-2.png" alt="">
-                </div>
-                <div class="bg-light p-4">
-                    <img src="img/vendor-3.png" alt="">
-                </div>
-                <div class="bg-light p-4">
-                    <img src="img/vendor-4.png" alt="">
-                </div>
-                <div class="bg-light p-4">
-                    <img src="img/vendor-5.png" alt="">
-                </div>
-                <div class="bg-light p-4">
-                    <img src="img/vendor-6.png" alt="">
-                </div>
-                <div class="bg-light p-4">
-                    <img src="img/vendor-7.png" alt="">
-                </div>
-                <div class="bg-light p-4">
-                    <img src="img/vendor-8.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Vendor End -->
-    
-<%@ include file="footer.jsp"%>
-
+    <%@ include file="footer.jsp"%>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -271,6 +166,19 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    
+    <script>
+    var currentDate = new Date().toISOString().split('T')[0];
+    document.getElementsByName('from_date')[0].setAttribute('min', currentDate);
+    document.getElementsByName('from_date')[0].addEventListener('change', function() {
+        var fromDate = new Date(this.value);
+        fromDate.setDate(fromDate.getDate() + 1); // Increment fromDate by one day
+        var minToDate = fromDate.toISOString().split('T')[0];
+        document.getElementsByName('to_date')[0].setAttribute('min', minToDate);
+    });
+</script>
+
+
 </body>
 
 </html>

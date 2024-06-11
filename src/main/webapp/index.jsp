@@ -1,9 +1,23 @@
 <%@ include file="header.jsp"%>
+<%@ page import="com.dao.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <!DOCTYPE html>
 <html lang="en">
 <body>
+
+<%
+	int bid=0;
+	try{
+		bid=Integer.parseInt(request.getParameter("bid"));
+	}catch(Exception e){
+	}
+	if(bid!=0)
+	{
+		BookingDao.updatePaymentStatus(bid);
+		response.sendRedirect("booking_list.jsp");
+	}
+%>
 
     <!-- Carousel Start -->
     <div class="container-fluid p-0" style="margin-bottom: 90px;">

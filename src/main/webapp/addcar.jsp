@@ -11,7 +11,7 @@
  <div class="container-fluid page-header">
         <h1 class="display-3 text-uppercase text-white mb-3">Register Car</h1>
         <div class="d-inline-flex text-white">
-            <h6 class="text-uppercase m-0"><a class="text-white" href="">Home</a></h6>
+            <h6 class="text-uppercase m-0"><a class="text-white" href="owner_index.jsp">Home</a></h6>
             <h6 class="text-body m-0 px-3">/</h6>
             <h6 class="text-uppercase text-body m-0">Register Car</h6>
         </div>
@@ -30,7 +30,7 @@
                 }
                 %>
                 
-                    <form name="frm" method="post" action="UserController" enctype="multipart/form-data">
+                    <form name="frm" method="post" action="CarController" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-12 form-group">
                                 <input type="text" class="form-control p-4" placeholder="Car Name" name="car_name" required="required">

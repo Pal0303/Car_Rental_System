@@ -79,7 +79,7 @@ if(session!=null){
             <% }
                else{
             %>
-                    <a class="text-body px-3" href="change_pwd.jsp"><i class="fa fa-user mr-2"></i>User Profile</a>
+                    <a class="text-body px-3" href="editprofile.jsp"><i class="fa fa-user mr-2"></i>User Profile</a>
                     <a class="text-body px-3" href="logout.jsp"><i class="fa fa-sign-out-alt mr-2"></i>Logout</a>
                     
                     <% } %>
@@ -105,14 +105,7 @@ if(session!=null){
                         <a href="index.jsp" class="nav-item nav-link active">Home</a>
                         <a href="about.jsp" class="nav-item nav-link">About</a>
                         <a href="service.jsp" class="nav-item nav-link">Service</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cars</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <a href="car.jsp" class="dropdown-item">Car Listing</a>
-                                <a href="detail.jsp" class="dropdown-item">Car Detail</a>
-                                <a href="booking.jsp" class="dropdown-item">Car Booking</a>
-                            </div>
-                        </div>
+                        <a href="car.jsp" class="nav-item nav-link">Car Listing</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">
@@ -120,7 +113,7 @@ if(session!=null){
                                 <a href="testimonial.jsp" class="dropdown-item">Testimonial</a>
                             </div>
                         </div>
-                        <a href="contact.jsp" class="nav-item nav-link">Contact</a>
+                        <a href="booking_list.jsp" class="nav-item nav-link">My Booking</a>
                     </div>
                 </div>
             </nav>

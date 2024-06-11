@@ -79,7 +79,7 @@ if(session!=null){
             <% }
                else{
             %>
-                    <a class="text-body px-3" href="change_pwd.jsp"><i class="fa fa-user mr-2"></i>User Profile</a>
+                    <a class="text-body px-3" href="editprofile.jsp"><i class="fa fa-user mr-2"></i>User Profile</a>
                     <a class="text-body px-3" href="logout.jsp"><i class="fa fa-sign-out-alt mr-2"></i>Logout</a>
                     <% } %>
                 </div>
@@ -108,8 +108,7 @@ if(session!=null){
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Manage Car</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <a href="addcar.jsp" class="dropdown-item">Register Car</a>
-                                <a href="detail.jsp" class="dropdown-item">Car Detail</a>
-                                <a href="booking.jsp" class="dropdown-item">Car Booking</a>
+                                <a href="viewcar.jsp" class="dropdown-item">View Car</a>
                             </div>
                         </div>
                         <div class="nav-item dropdown">
@@ -119,7 +118,7 @@ if(session!=null){
                                 <a href="testimonial.jsp" class="dropdown-item">Testimonial</a>
                             </div>
                         </div>
-                        <a href="contact.jsp" class="nav-item nav-link">Contact</a>
+                        <a href="view_rental_owner.jsp" class="nav-item nav-link">Rental Dashboard</a>
                     </div>
                 </div>
             </nav>

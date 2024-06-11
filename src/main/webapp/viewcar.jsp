@@ -1,4 +1,4 @@
-<%@ include file="header.jsp"%>
+<%@ include file="owner_header.jsp"%>
 <%@ page import="com.dao.CarDao" %>
 <%@ page import="com.bean.*" %>
 <%@ page import="java.util.List" %>
@@ -10,20 +10,19 @@
 
     <!-- Page Header Start -->
     <div class="container-fluid page-header">
-        <h1 class="display-3 text-uppercase text-white mb-3">Car Listing</h1>
+        <h1 class="display-3 text-uppercase text-white mb-3">View Car</h1>
         <div class="d-inline-flex text-white">
             <h6 class="text-uppercase m-0"><a class="text-white" href="owner_index.jsp">Home</a></h6>
             <h6 class="text-body m-0 px-3">/</h6>
-            <h6 class="text-uppercase text-body m-0">Car Listing</h6>
+            <h6 class="text-uppercase text-body m-0">View Car</h6>
         </div>
     </div>
     <!-- Page Header Start -->
 
-
     <!-- Rent A Car Start -->
     <div class="container-fluid py-5">
         <div class="container pt-5 pb-3">
-            <h1 class="display-4 text-uppercase text-center mb-5">Find Your Car</h1>
+            <h1 class="display-4 text-uppercase text-center mb-5">View Your Car</h1>
             
             <%
                 if(request.getAttribute("msg")!=null){
@@ -32,7 +31,7 @@
                 %>
             <div class="row">
             
-            <% List<Car> list=CarDao.GetAllCar();
+            <% List<Car> list=CarDao.GetCar(u.getUid());
             for(Car c:list){
             %>
 <div class="col-lg-4 col-md-6 mb-2">
@@ -58,8 +57,8 @@
             </div>
         </div>
         <div class="d-flex justify-content-center">
-            <a class="btn btn-info px-3 mr-2" href="detail.jsp?cid=<%=c.getCid() %>">Car Detail</a>
-            <a class="btn btn-primary px-3" href="booking.jsp?cid=<%=c.getCid() %>">Book Now</a>
+            <a class="btn btn-primary px-3 mr-2" href="editcar.jsp?cid=<%=c.getCid() %>">Edit</a>
+            <a class="btn btn-danger px-3" href="deletecar.jsp?cid=<%=c.getCid() %>">Delete</a>
         </div>
     </div>
 </div>

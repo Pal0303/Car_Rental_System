@@ -75,8 +75,42 @@ public class CarController extends HttpServlet {
 	         CarDao.AddCar(c);
 	         request.setAttribute("msg", "Car Registered Successfully");
 	         request.getRequestDispatcher("addcar.jsp").forward(request, response);
-			
 		}
-	}
+		
+		else if(submit.equalsIgnoreCase("update_Car")) {
+			Car c=new Car();
+			c.setCid(Integer.parseInt(request.getParameter("cid")));
+			c.setCar_name(request.getParameter("car_name"));
+			c.setCar_desc(request.getParameter("car_desc"));
+			c.setCar_model(Long.parseLong(request.getParameter("car_model")));
+			c.setCar_gear(request.getParameter("car_gear"));
+			c.setFuel_eff(request.getParameter("fuel_eff"));
+			c.setFuel_type(request.getParameter("fuel_type"));
+			c.setPass_cap(Integer.parseInt(request.getParameter("pass_cap")));
+			c.setLugg_cap(Integer.parseInt(request.getParameter("lugg_cap")));
+			c.setCar_ppd(Integer.parseInt(request.getParameter("car_ppd")));
+			
+			String savePath = "C:\\Users\\PAL DAVE\\eclipse-workspace\\CarRental\\src\\main\\webapp\\car_images";
+	         File fileSaveDir = new File(savePath);
+	         if (!fileSaveDir.exists()) {
+	            fileSaveDir.mkdir();
+	         }
 
+	         Part file1 = request.getPart("car_img");
+	         String fileName = this.extractfilename(file1);
+	         file1.write(savePath + File.separator + fileName);
+	         String savePath2 = "C:\\Users\\PAL DAVE\\eclipse-workspace\\CarRental\\src\\main\\webapp\\car_images";
+	         File imgSaveDir = new File(savePath2);
+	         if (!imgSaveDir.exists()) {
+	            imgSaveDir.mkdir();
+	         }
+
+	         c.setCar_img(fileName);
+	         
+			CarDao.update_car(c);
+			request.setAttribute("msg", "Car Updated Successfully");
+	        request.getRequestDispatcher("viewcar.jsp").forward(request, response);
+		}
+		
+	}
 }
